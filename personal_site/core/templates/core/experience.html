@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>My work experience</h2>
+    {% for work in works %}
+        <a href="{{ work.site }}">
+            <img src="{{ work.logo.url }}" alt="Nature" width="70" height="50">
+        </a>
+        <p>{{ work.description|linebreaks }}</p>
+        <p>What I did: <br>{{ work.about_experience|linebreaks }}</p>
+    {% endfor %}
+{% endblock %}

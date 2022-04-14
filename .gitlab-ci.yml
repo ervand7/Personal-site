@@ -1,0 +1,36 @@
+variables:
+  GITLAB_CI_ENABLED: $GITLAB_CI_ENABLED
+
+stages:
+  - build
+  - test
+
+default:
+  image: ubuntu:20.04
+
+cache:
+  paths:
+    - ~/.cache/pip/
+
+before_script:
+  - apt -y update
+  - apt -y install apt-utils
+  - apt -y install python3.8 python3-pip
+  - apt -y upgrade
+  - pip3 install -r requirements.txt
+  - echo $GITLAB_CI_ENABLED
+
+.build:
+  stage: build
+  script:
+    - cd personal_site
+    - python3 manage.py makemigrations
+    - python3 manage.py migrate
+    - python3 manage.py check
+
+test:
+  extends: .build
+  stage: test
+  script:
+    - cd personal_site
+    - pytest auth_djoser/tests auth_JWT/tests core/tests

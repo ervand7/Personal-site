@@ -1,0 +1,11 @@
+###
+POST http://127.0.0.1:8000/api/v1/feedbacks_list/
+Content-Type: application/json
+Authorization: Token 216421b8294c6066c3b9117b09f17af709df839b
+
+{
+  "description": "Hello",
+  "category": "Contribution",
+  "content": "asd",
+  "age_confirmation": true
+}

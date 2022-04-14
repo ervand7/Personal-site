@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load embed_video_tags %}
+
+{% block content %}
+    <h2>I also play the violin</h2>
+    <p>I have two educations: on the first - I'm a violinist, on the second - a programmer.
+    And now I want no introduce you some of my records:
+    </p>
+    <div class="col-md-8 offset-md-2">
+        {% for i in videos %}
+            <p>{{ i.name }}</p>
+            {% video i.url '800x300' %}
+            <br>
+        {% endfor %}
+    </div>
+
+
+{% endblock %}

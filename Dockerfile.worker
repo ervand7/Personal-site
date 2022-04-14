@@ -1,0 +1,14 @@
+# export DOCKER_BUILDKIT=1
+FROM python:3.9
+
+ARG workdir=/usr/src/app
+WORKDIR $workdir
+
+COPY ./personal_site $workdir/personal_site
+COPY scripts/worker.sh $workdir
+COPY requirements.txt $workdir
+COPY .env $workdir
+
+RUN --mount=type=cache,target=/root/.cache/pip pip install -r $workdir/requirements.txt
+RUN chmod +x $workdir/worker.sh
+ENTRYPOINT ["/usr/src/app/worker.sh"]

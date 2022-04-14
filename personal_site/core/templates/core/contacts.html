@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <link type="text/css" href="{% static 'core/css/contacts.css' %}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <a href = "mailto: ervand7@mail.ru"><i class="fa fa-envelope"> ervand7@mail.ru</i></a>
+    <br><br>
+    <a href="https://www.facebook.com/profile.php?id=100051109358187"><i class="fa fa-facebook"></i></a>
+    <a href="https://www.linkedin.com/in/ervand7/"><i class="fa fa-linkedin"></i></a>
+    <a href="https://github.com/ervand7/"><i class="fa fa-github"></i></a>
+
+    <hr>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="contact-map">
+                <iframe src="https://www.google.com/maps/embed/v1/place?q=Lyubertsy&amp;key=AIzaSyBSFRN6WWGYwmFi498qXXsD2UwkbmD74v4"
+                        frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+                        style="width: 100%; height: 360px;"></iframe>
+            </div>
+        </div>
+    </div>
+{% endblock %}

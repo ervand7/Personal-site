@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <link type="text/css" href="{% static 'core/css/get_api.css' %}" rel="stylesheet"/>
+    <p>This site is written on Django.
+        And I could not help but take advantage of the Django Rest Framework.
+        Also, here you can get a link to the full Swagger Open API documentation of this site.</p>
+    <br>
+    {% for api in apis %}
+        <a href="{% url api.name %}">
+            <button onclick="return confirm('You will leave main site. Continue?')" type="button"
+                    class="block">{{ api.description }}</button>
+            {% if forloop.first %}
+                <hr style="color: #5e5e5e">
+            {% endif %}
+        </a>
+    {% endfor %}
+
+    <a href="{{ request.scheme }}://{{ request.META.HTTP_HOST }}/api/v1/session-auth/login/">
+        <button type="button" class="block">Log in through session authentication</button>
+    </a>
+    <a href="{{ request.scheme }}://{{ request.META.HTTP_HOST }}/api/v1/session-auth/logout/">
+        <button type="button" class="block">Log out through session authentication</button>
+    </a>
+{% endblock %}

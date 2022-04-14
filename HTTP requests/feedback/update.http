@@ -1,0 +1,23 @@
+###
+PUT http://127.0.0.1:8000/api/v1/feedbacks_list/150/
+Content-Type: application/json
+Authorization: Token 72ae5ae6a7d9c260cdc9535d5b2b555272f1c4d6
+
+{
+  "description": "Hello",
+  "category": "Contribution",
+  "content": "asd",
+  "age_confirmation": true
+}
+
+###
+PATCH http://127.0.0.1:8000/api/v1/feedbacks_list/150/
+Content-Type: application/json
+Authorization: Token 72ae5ae6a7d9c260cdc9535d5b2b555272f1c4d6
+
+{
+  "description": "Hello +",
+  "category": "Contribution",
+  "content": "asd",
+  "age_confirmation": true
+}

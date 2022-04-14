@@ -1,0 +1,27 @@
+###
+PUT http://127.0.0.1:8000/api/v1/skills_list/12/
+Content-Type: application/json
+Authorization: Token ===== only superuser token =====
+
+{
+  "name": "Ajax",
+  "slug": "ajax",
+  "it_area": 2,
+  "description": "By default, all requests are sent asynchronously (i.e. this is set to true by default). If you need synchronous requests, set this option to false. Cross-domain requests and dataType: jsonp requests do not support synchronous operation.",
+  "is_published": true,
+  "work": 1
+}
+
+###
+PATCH http://127.0.0.1:8000/api/v1/skills_list/12/
+Content-Type: application/json
+Authorization: Token ===== only superuser token =====
+
+{
+  "name": "Ajax",
+  "slug": "ajax",
+  "it_area": 1,
+  "description": "By default, all requests are sent asynchronously (i.e. this is set to true by default). If you need synchronous requests, set this option to false. Cross-domain requests and dataType: jsonp requests do not support synchronous operation.",
+  "is_published": true,
+  "work": 1
+}

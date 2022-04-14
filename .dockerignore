@@ -1,0 +1,20 @@
+# develop
+HTTP requests
+
+# IDEs
+.idea/
+.vscode/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+
+# Distribution / packaging
+.eggs/
+*.egg
+
+# Unit test / coverage reports
+.pytest_cache/
+
+# Environments
+venv/
+

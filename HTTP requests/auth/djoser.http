@@ -1,0 +1,35 @@
+# Creating a new user
+POST http://127.0.0.1:8000/api/v1/auth/users/
+Content-Type: application/json
+
+{
+  "email": "q1zx1c@zxc.ru",
+  "username": "q1z1xc@zxc.ru",
+  "password": "qwerty123456789000000000000"
+}
+
+### Login
+POST http://127.0.0.1:8000/api/v1/auth/token/login/
+Content-Type: application/json
+
+{
+  "username": "q1z1xc@zxc.ru",
+  "password": "qwerty123456789000000000000"
+}
+
+### Creating feedback
+POST http://127.0.0.1:8000/api/v1/feedbacks_list/
+Content-Type: application/json
+Authorization: Token 026fcf37d144e7d8f56ed9861b0339e43fa7e111
+
+{
+  "description": "cz!",
+  "category": "Job",
+  "content": "234",
+  "age_confirmation": true
+}
+
+### Logout
+POST http://127.0.0.1:8000/api/v1/auth/token/logout/
+Content-Type: application/json
+Authorization: Token d823a0ce4560f38329fab2c0fab4b8d24d8677dc

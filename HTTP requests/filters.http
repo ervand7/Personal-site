@@ -1,0 +1,19 @@
+### select by category
+GET http://127.0.0.1:8000/api/v1/feedbacks_list/?category=Other
+Accept: application/json
+
+### select by user
+GET http://127.0.0.1:8000/api/v1/feedbacks_list/?user__username=user22
+Accept: application/json
+
+### select by category and user
+GET http://127.0.0.1:8000/api/v1/feedbacks_list/?category=Contribution&user=6
+Accept: application/json
+
+### make search
+GET http://127.0.0.1:8000/api/v1/feedbacks_list/?q=world
+Accept: application/json
+
+### select with ordering
+GET http://127.0.0.1:8000/api/v1/feedbacks_list/?o=category
+Accept: application/json

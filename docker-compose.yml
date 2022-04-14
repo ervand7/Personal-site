@@ -1,0 +1,92 @@
+version: "3.7"
+services:
+  web:
+    container_name: web
+    image: personal_site
+    ports:
+      - "8000:8000"
+    build:
+      context: ./
+      dockerfile: Dockerfile.main
+    tty: true
+    stdin_open: true
+    volumes:
+      - ./personal_site:/usr/src/app/personal_site
+    depends_on:
+      - db
+    env_file:
+      - .env
+    networks:
+      - default
+
+  db:
+    container_name: db
+    image: postgres:14.3-alpine
+    ports:
+      - "5435:5432"
+    env_file:
+      - .env
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - default
+
+  nginx:
+    container_name: nginx
+    build:
+      context: nginx
+      dockerfile: Dockerfile
+    depends_on:
+      - web
+      - db
+    ports:
+      - "80:80"
+    volumes:
+      - ./personal_site/static/:/static
+      - ./personal_site/media/:/media
+    networks:
+      - default
+
+  worker:
+    container_name: worker
+    build:
+      context: ./
+      dockerfile: Dockerfile.worker
+    restart: always
+    volumes:
+      - ./personal_site:/app/personal_site:ro
+    depends_on:
+      - rabbitmq
+    networks:
+      - default
+
+  beat:
+    container_name: beat
+    build:
+      context: ./
+      dockerfile: Dockerfile.beat
+    restart: always
+    volumes:
+      - ./personal_site:/app/personal_site:ro
+    depends_on:
+      - rabbitmq
+    networks:
+      - default
+
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:3.9-management
+    ports:
+      - "15672:15672"
+    env_file:
+      - .env
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+    depends_on:
+      - web
+    networks:
+      - default
+
+volumes:
+  postgres-data:
+  rabbitmq-data:

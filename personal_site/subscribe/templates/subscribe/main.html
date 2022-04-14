@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <link type="text/css" href="{% static 'subscribe/css/styles.css' %}" rel="stylesheet"/>
+    <body>
+    {% if request.user.subscriptions.all %}
+        <form action="{% url 'unsubscribe' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-error">{{ form.non_field_errors }}</div>
+            <div class="container">
+                <h2>You subscription</h2>
+                <p>You have subscribed to an email newsletter, in which you regularly receive letters about updates on
+                    my API, skills, experience and more.</p>
+            </div>
+            <div class="container" style="background-color:white">
+                {{ form.captcha }}
+                <div class="form-error">{{ form.captcha.errors }}</div>
+                <div class="container">
+                    <input id="unsubscribe" type="submit" value="Unsubscribe">
+                </div>
+            </div>
+        </form>
+
+    {% else %}
+        <form action="{% url 'subscribe' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-error">{{ form.non_field_errors }}</div>
+            <div class="container">
+                <h2>Subscribe to my Newsletter</h2>
+                <p>You can follow updates on my API, skills, experience and more. With a certain frequency,
+                    corresponding letters will be sent to the email address you specified during registration. Also,
+                    immediately after registration, you will be sent a wecome-letter. You can always unsubscribe from
+                    the mailing list. The option to unsubscribe will appear on the same page.
+                </p>
+            </div>
+            <div class="container" style="background-color:white">
+                {{ form.captcha }}
+                <div class="form-error">{{ form.captcha.errors }}</div>
+                <p></p>
+                {{ form.daily }} Daily Newsletter
+                <div class="form-error">{{ form.daily.errors }}</div>
+
+            </div>
+            <div class="container">
+                <input id="subscribe" type="submit" value="Subscribe">
+            </div>
+        </form>
+    {% endif %}
+
+    </body>
+{% endblock content %}

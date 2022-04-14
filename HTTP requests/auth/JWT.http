@@ -1,0 +1,37 @@
+### Getting JWT-token
+POST http://127.0.0.1:8000/api/v1/token/
+Content-Type: application/json
+
+{
+    "username": "asa",
+    "password": "eeeeeee7777777"
+}
+
+### Create a feedback using JWT-token
+POST http://127.0.0.1:8000/api/v1/feedbacks_list/
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUzMTUzMDQ0LCJqdGkiOiJlOTIwNDRhOGIwNjM0ZThhYTgzZGMwYzM2Y2VjYmIzYSIsInVzZXJfaWQiOjE3fQ.n4PluZHfTT4IHKg-yEcPCDFVwZCFvfrWZjYa_4KlwA8
+
+{
+  "description": "ccccccccccccc",
+  "category": "Contribution",
+  "content": "asd",
+  "age_confirmation": true,
+  "image": "/media/feedback_images/2022/04/28/pn123.png"
+}
+
+### Refresh JWT-token
+POST http://127.0.0.1:8000/api/v1/token/refresh/
+Content-Type: application/json
+
+{
+    "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY1MTkwMDQ0OSwianRpIjoiODAyMGNkZjQwZTcxNDUxNWE0YTQ5YzgxYjRkZDE4ZjMiLCJ1c2VyX2lkIjo2fQ.cD0eIZkliqMMqZm38uchUGD33V5N_MUPBO2c5zitOXk"
+}
+
+### Verify JWT-token
+POST http://127.0.0.1:8000/api/v1/token/verify/
+Content-Type: application/json
+
+{
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUzMDIxNDEwLCJqdGkiOiIzMmNlMjdkYmZiNDA0NmQ2YTJhZjYyYzAwYWEwYjJiOCIsInVzZXJfaWQiOjE3fQ.qJs1yJqv4XqBZtzLul1PfhvYATZNwa67v7CKVbtH6at"
+}

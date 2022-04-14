@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <link type="text/css" href="{% static 'summary/css/styles.css' %}" rel="stylesheet"/>
+    <h2>My summary references</h2>
+    <p>For several years I have been taking notes on everything related to programming. I collect materials from
+        YouTube, Habr, Stackoverflow, official documentations, wikipedia, paid and free courses, etc.</p>
+
+    {% for area in it_areas %}
+        <button class="collapsible">{{ area.name }}</button>
+        <div class="content">
+            {% for tech in area.technologies.all %}
+                <p> - <a href="{{ tech.link }}">{{ tech.name }}</a></p>
+            {% endfor %}
+        </div>
+    {% endfor %}
+    <script src="{% static 'summary/js/script.js' %}"></script>
+{% endblock %}
