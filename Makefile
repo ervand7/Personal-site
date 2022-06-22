@@ -14,6 +14,6 @@ test:
 down:
 	docker-compose down
 
-# target: pip - pip install -U -r requirements.txt
+# target: install - pip install -U -r requirements.txt
 install:
 	pip install -U -r requirements.txt
